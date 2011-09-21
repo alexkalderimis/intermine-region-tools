@@ -1,0 +1,39 @@
+<tool id="UploadRegionDataToFlyMine" name="Export Genomic Region List to {{name}}" version="0.0.1">
+    <description>
+        Create a list of features within a list of genomic regions and upload it to {{name}}
+    </description>
+    <command interpreter="perl">
+        send_regions_to_intermine.pl '$regions' '$organism' '$extension' '$featureTypes' '$listName' '$listDesc' '$token' '$output' {{base}}
+    </command>
+    <inputs>
+        <param name="regions" label="Genomic Regions" type="data" format="bed"/>
+        <param name="organism" type="select" label="Organism">
+            <options from_file="{{name}}_organisms.tsv">
+                <column name="name" index="1"/>
+                <column name="value" index="0"/>
+            </options>
+        </param>
+        <param name="extension" type="integer" label="Plus/Minus" min="0" value="0"/>
+        <param name="featureTypes" type="select" multiple="true" label="Feature Types" help="Select which feature types you are interested in from the supplied regions">
+            <options from_file="{{name}}_sf_types.tsv">
+                <column name="name" index="1"/>
+                <column name="value" index="0"/>
+            </options>
+        </param>
+        <param name="listName" type="text" label="List Name" help="Choose a name for the new list (one will be generated if none is supplied)"/>
+        <param name="listDesc" type="text" label="List Description"/>
+        <param name="token" type="text" label="API Key" help="Enter your {{name}} API key - if you do not have one you will need to visit the MyMine section at {{name}} first"/>
+    </inputs>
+    <outputs>
+        <data name="output" format="tabular"/>
+    </outputs>
+    <help>
+
+.. class:: warningmark
+
+**TIP** This tool requires *BED* format.
+
+    </help>
+</tool>
+
+

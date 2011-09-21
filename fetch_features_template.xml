@@ -1,0 +1,40 @@
+<tool id="InterMineFetchRegionFeatures{{name}}{{format}}" 
+    name="Fetch features in region from {{name}} in {{format}} format" version="0.0.1">
+    <description>
+        Fetch details of features within a list of genomic regions from {{name}} as {{format}}
+    </description>
+    <command interpreter="perl">
+        fetch_features_from_intermine.pl '$regions' '$organism' '$extension' '$featureTypes' '$output' {{base}} {{format}}
+    </command>
+    <inputs>
+        <param name="regions" label="Genomic Regions" type="data" format="bed"/>
+        <param name="organism" type="select" label="Organism">
+            <options from_file="{{name}}_organisms.tsv">
+                <column name="name" index="1"/>
+                <column name="value" index="0"/>
+            </options>
+        </param>
+        <param name="extension" type="integer" label="Plus/Minus" min="0" value="0"/>
+        <param name="featureTypes" type="select" multiple="true" label="Feature Types" help="Select which feature types you are interested in from the supplied regions">
+            <options from_file="{{name}}_sf_types.tsv">
+                <column name="name" index="1"/>
+                <column name="value" index="0"/>
+            </options>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="output" format="{{format}}"/>
+    </outputs>
+    <help>
+
+Usage
+=====
+
+This tool fetches data on features of a specific type within 
+a set of regions, and returns information about those features as 
+a {{format}} file.
+
+    </help>
+</tool>
+
+
