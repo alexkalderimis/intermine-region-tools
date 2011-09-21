@@ -6,3 +6,17 @@ to generate a suite of tools for an InterMine, run:
   sh generate_tool_dir.sh "http://url.to.your.mine/path" "NameOfMine"
 
 This should create a directory called NameOfMine with the required data inside it.
+
+Requirements
+------------
+
+Tool generation:
+  - bash
+  - perl
+    - Webservice::InterMine 0.9800
+
+Tool use:
+  - perl
+    - LWP
+    - JSON
+
