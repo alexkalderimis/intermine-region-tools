@@ -19,6 +19,8 @@ perl generate_feature_tools_xml.pl "$BASE" "$NAME"
 
 cd $NAME
 mkdir tool-definitions
+cp ../*_from_intermine.pl tool-definitions
+cp ../*_to_intermine.pl tool-definitions
 mv ../fetch_features_${NAME}* tool-definitions
 mv ../send_list_*${NAME}.xml tool-definitions
 
