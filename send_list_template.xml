@@ -22,7 +22,7 @@
         </param>
         <param name="listName" type="text" label="List Name" help="Choose a name for the new list (one will be generated if none is supplied)"/>
         <param name="listDesc" type="text" label="List Description"/>
-        <param name="token" type="text" label="API Key" help="Enter your {{name}} API key - if you do not have one you will need to visit the MyMine section at {{name}} first"/>
+        <param name="token" type="text" label="API Key" help="Enter your {{name}} API key - if you do not have one you will need to visit the MyMine section at {{base}} first"/>
     </inputs>
     <outputs>
         <data name="output" format="tabular"/>

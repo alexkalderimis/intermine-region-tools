@@ -1,0 +1,33 @@
+<tool id="UploadListOfIdsTo{{name}}" name="Export List of Ids to {{name}}" version="0.0.1">
+    <description>
+        Upload a list of objects identified by a list of ids to {{name}}
+    </description>
+    <command interpreter="perl">
+        send_ids_to_intermine.pl '$ids' '$type' '$listName' '$listDesc' '$tags' '$token' '$output' {{base}}
+    </command>
+    <inputs>
+        <param name="ids" label="List of ids" type="data" format="tabular"/>
+        <param name="type" type="select" label="Data Type">
+            <options from_file="{{name}}_classes.tsv">
+                <column name="name" index="1"/>
+                <column name="value" index="0"/>
+            </options>
+        </param>
+        <param name="listName" type="text" label="List Name" help="Choose a name for the new list (one will be generated if none is supplied)"/>
+        <param name="listDesc" type="text" label="List Description"/>
+        <param name="token" type="text" label="API Key" help="Enter your {{name}} API key - if you do not have one you will need to visit the MyMine section at {{base}} first"/>
+        <param name="tags" type="text" label="Tags" help="Comma delimited set of classifying tags"/>
+    </inputs>
+    <outputs>
+        <data name="output" format="tabular"/>
+    </outputs>
+    <help>
+
+.. class:: warningmark
+
+**TIP** duplicates and synonymns will not be included in any list created.
+
+    </help>
+</tool>
+
+
